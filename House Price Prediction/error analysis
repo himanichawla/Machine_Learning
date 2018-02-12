@@ -1,0 +1,39 @@
+\section{Error Analysis:}
+Figure (??) shows the performance of our complex model using decision tree classifier and linear regression, which is denoted by the red line in graph(??). As we can see from the graph, the difference between the blue and red curve denote the area our model can improve on, for better prediction. As the complex model consists of the two stages: the classification and regression stage, we can attempt to improve either or both of them. However, from our previous experiments, we know the regression models perform quite well on the numeric and ordinal attributes, which indicates the classification stage has room for improvement. The further proof of this is shown in figure (???), which shows decision tree classifier and linear regression to have a correlation of 0.885, with an optimum bin number of 2 bins. This correlation is lower than the correlation of 0.917 when using simple linear regression on only linear and ordinal attributes. We contribute the reduction in performance to incorrect classification of houses into bins, or incorrect binning scheme, which are both part of the classification stage.
+Therefore, we tried two methods to improve the classification stage.
+\begin{itemize}
+\par
+\item \textit {Different Classification Algorithm: } Given the binning scheme, it is possible the existing clssification algorithm is not able to learn the binning well. Therefore, a different classifier might be able to learn the binning better, resulting in *better* bins, which in turn improves the accuracy of our regression stage.
+\item \textit {Different Binning Scheme: } It is also possible that the existing binning scheme is not able to bin the houses better, which in turn effects the classifier learning process. Therefore, a different binning scheme can also improve performance.
+\end{itemize}
+
+
+\section {Improved Custom Model}
+We tried different models for each of the possible options mentioned above.
+
+\subsection {Different Classification Algorithm}
+We tried several different classification algorithms. We also tried different combination of classifier and regression models. Since Gradient Boosting and Random Forest regressors worked so well in the regression models, we decided to attempt gradient boosting and random forest classification and regression models together. Table(??) shows the correlation for each of the models. Figure (??) shows the performance of the best performing models.
+As we can see from Figure (??), gradient boosting Classifier and regressor model performs the best with a correlation of 0.921, with an optimum bin number of  bins, which is close to the best model of using simple gradient boosting regressor model, which had a correlation of 0.947, and also an improvement from our original model. 
+
+\subsection
+Given that we are using equal frequency bins in the original model, it is possible that houses with sale prices significantly different from each other were being put in the same bin, which decreases the accuracy of our regression models. This is especially true for the last bin, as there are very few houses with high sale prices, these houses might be put in the same bin as some significantly lower priced houses. Therefore we hypethesize, a scheme which forms bins where the differences in the sale prices are not as signifiant as equal frequency binning can improve binning. Following this logic, we decided to try K means clustering and Gaussian Mixture Models to do binning, which are then fed to the classifier. We attempted four different combinations, which are
+\begin {itemize}
+\item K-means clustering with decision tree classifier and linear regressor
+\item Gaussian mixture model with decision tree classifier and linear regressor
+\item K-means clustering with gradient boosting classifier and regressor
+\item Gaussian mixture model with gradient boosting and regressor
+\end{itemize} 
+\par
+We decided to attempt gradient boosting as well, as it is the best performing classfier and regressor thus far. Table (??) shows the performances of these four models.
+Both k-means and gaussian mixture model with decision tree classifier and linear regression achieve a correlation of 0.867, which is an improvement from our original model. K-means and gaussian mixture model with gradient boosting classifier and regressor achieve a correlation of 0.921, which is close to our best model.
+\par
+why k-means and gmm get similar results.??
+\par
+From our results, we observe different classification algorithms and binning schemes both improve the performance of the original model, and the use ensembles significantly improve the accuracy of the models.
+
+\section {Conclusion}
+We started our investigation on the Kaggle housing price data by carrying out some feature manipulation and selecting and running simple regression models. Here we observed, ensemble models, especially gradient boosting worked best when using all attributes and linear regressor performed close to it using only numeric and ordinal attributes, which gave way to two research question. We were able to answer the first, by building a complex model using a combination of a classifier and regression model. We also improved the complex model by introducing the use different classification algorithms and binning schemes. The performance of our improved model was close to our best achieved performance from all models, which answered our second research question. We believe more intuitive feature selection and other classification and binning approaches will be able to improve the performance of our custom model. 
+
+
+
+

@@ -1,0 +1,15 @@
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{lll}
+                                                                   & Mean Absolute Error & Correlation \\
+Decision,Tree \& Linear Regression                                 & 20,283              & 0.881       \\
+Random,Forest Classifier \& Regression                             & 19,279              & 0.910       \\
+Gradient,Boosting Classifier \& Regression                         & 17,957              & 0.921       \\
+K-means,,Decision Tree \& Linear Regression                        & 22,393              & 0.867       \\
+Gaussian,Mixture Model, Decision Tree \& Linear Regression         & 22,429              & 0.867       \\
+K-means,,Gradient Boosting Classifier \& Regression                & 18,201              & 0.919       \\
+Gaussian,Mixture Model, Gradient Boosting Classifier \& Regression & 17,853              & 0.921      
+\end{tabular}
+\end{table}
